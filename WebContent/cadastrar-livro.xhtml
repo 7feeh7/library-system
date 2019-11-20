@@ -1,0 +1,24 @@
+<ui:composition
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="template.xhtml">
+	<ui:define name="content">
+		<h2>Cadastrar Livro</h2>
+		<h:form>	
+			<h:panelGrid columns="1">
+				<h:outputLabel value="Titulo:"/>
+				<h:inputText class="b-input"/>
+				<h:outputLabel value="Autor:"/>
+				<h:inputText class="b-input"/>
+				<h:outputLabel value="Categoria:"/>
+				<h:inputText class="b-input"/>
+				<h:outputLabel value="Data Publicacao:"/>
+				<h:inputText class="b-input"/>
+				<h:commandButton class="btn-blue" value="Cadastrar" action="#{livroBean.cadastrar}"></h:commandButton>
+				<h:commandButton class="btn-red" value="Cadastrar" ></h:commandButton>
+				<h:commandButton class="btn-blank" value="Cadastrar"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

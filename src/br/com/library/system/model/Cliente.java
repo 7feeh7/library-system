@@ -1,4 +1,4 @@
-package br.com.library.model;
+package br.com.library.system.model;
 
 public class Cliente {
 	
@@ -11,6 +11,7 @@ public class Cliente {
 	public Cliente() {
 		
 	}
+	
 	public Cliente(String nome, String cpf, String email, String endereco, String telefone) {
 		this.nome = nome;
 		this.cpf = cpf;

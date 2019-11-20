@@ -3,7 +3,7 @@ package br.com.library.system.teste;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import br.com.library.model.Cliente;
+import br.com.library.system.model.Cliente;
 import br.com.library.system.dao.ClienteDAO;
 
 class ClienteDAOTeste {

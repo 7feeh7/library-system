@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import br.com.library.model.Cliente;
+import br.com.library.system.model.Cliente;
 
 public class ClienteDAO {
 
@@ -41,11 +40,10 @@ public class ClienteDAO {
 	}
 
 	public List<Cliente> findAll() {
+		List<Cliente> clientes = new ArrayList<>();
 		String sql = "SELECT * FROM cliente";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
-		List<Cliente> clientes = new ArrayList<>();
 
 		try {
 			ps = con.prepareStatement(sql);
