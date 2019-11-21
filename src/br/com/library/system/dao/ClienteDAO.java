@@ -50,6 +50,7 @@ public class ClienteDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Cliente cliente = new Cliente();
+				cliente.setId(rs.getInt("id"));
 				cliente.setNome(rs.getString("nome"));
 				cliente.setCpf(rs.getString("cpf"));
 				cliente.setEmail(rs.getString("email"));
@@ -63,6 +64,30 @@ public class ClienteDAO {
 			ConnectionFactory.closeConnection(con, ps, rs);
 		}
 		return clientes;
+	}
+	
+	public boolean update(Cliente cliente) {
+
+		String sql = "UPDATE cliente set nome=?, cpf=?, email=?, endereco=?, telefone=? WHERE id=?";
+
+		PreparedStatement ps = null;
+
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, cliente.getId());
+			ps.setString(2, cliente.getNome());
+			ps.setString(3, cliente.getCpf());
+			ps.setString(4, cliente.getEmail());
+			ps.setString(5, cliente.getEndereco());
+			ps.setString(6, cliente.getTelefone());
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.err.println("Erro: " + e);
+			return false;
+		} finally {
+			ConnectionFactory.closeConnection(con, ps);
+		}
 	}
 
 }

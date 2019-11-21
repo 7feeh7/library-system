@@ -1,23 +1,32 @@
 package br.com.library.system.model;
 
 public class Cliente {
-	
+
+	private int id;
 	private String nome;
 	private String cpf;
 	private String email;
 	private String endereco;
 	private String telefone;
-	
+
 	public Cliente() {
-		
+
 	}
-	
+
 	public Cliente(String nome, String cpf, String email, String endereco, String telefone) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.endereco = endereco;
 		this.telefone = telefone;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {

@@ -11,6 +11,10 @@
 			
 		<h:dataTable value="#{clienteBean.clientes}" var="cliente">
 			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{cliente.id}"/>
+			</h:column>
+			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{cliente.nome}"/>
 			</h:column>
