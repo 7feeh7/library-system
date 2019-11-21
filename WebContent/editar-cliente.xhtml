@@ -1,0 +1,27 @@
+<ui:composition
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="template.xhtml">
+	<ui:define name="content">
+		<h2>Editar Cliente</h2>
+		<h:form>	
+			<h:panelGrid columns="1">
+				<h:outputLabel value="Nome:"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.nome}"/>
+				<h:outputLabel value="CPF:"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.cpf}"/>
+				<h:outputLabel value="E-mail:"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.email}"/>
+				<h:outputLabel value="Endereco:"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.endereco}"/>
+				<h:outputLabel value="Telefone:"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.telefone}"/>
+				
+				<h:commandButton class="btn-blue" value="Cadastrar" action="#{clienteBean.cadastrar}"></h:commandButton>
+				<h:commandButton class="btn-red" value="Cadastrar" action="#{clienteBean.gravar}"></h:commandButton>
+				<h:commandButton class="btn-blank" value="Cadastrar" action="#{clienteBean.gravar}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

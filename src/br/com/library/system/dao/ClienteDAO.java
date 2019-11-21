@@ -38,8 +38,7 @@ public class ClienteDAO {
 			ConnectionFactory.closeConnection(con, ps);
 		}
 	}
-	public boolean edit(int id) {
-		Cliente cliente = new Cliente();
+	public boolean edit(Cliente cliente) {
 		String sql = "SELECT * FROM cliente where=?";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -110,11 +109,8 @@ public class ClienteDAO {
 	}
 	
 	public boolean delete(Cliente cliente) {
-
 		String sql = "DELETE FROM cliente WHERE id=?";
-
 		PreparedStatement ps = null;
-
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, cliente.getId());

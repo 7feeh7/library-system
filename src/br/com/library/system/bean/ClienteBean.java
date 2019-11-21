@@ -63,6 +63,10 @@ public class ClienteBean {
 			// TODO: handle exception
 		}
 	}
+	public String editar(int id) {
+	return "a";
+		
+	}
 	
 
 	
