@@ -24,12 +24,22 @@ public class ClienteBean {
 		this.clientes = clientes;
 	}
 	
-	public void gravar() {
+	public void cadastrar() {
 		dao = new ClienteDAO();
 		if (dao.save(cliente)) {
 			System.out.println("Salvo com sucesso!");
 		} else {
 			System.out.println("Erro ao salvar");
+		}
+	}
+	
+	public void alterar(int id) {
+		dao = new ClienteDAO();
+		cliente.setId(id);
+		if(dao.update(cliente)) {
+			System.out.println("Alterado com sucesso!");
+		} else {
+			System.out.println("Erro ao alterar");
 		}
 	}
 	
@@ -40,7 +50,19 @@ public class ClienteBean {
 		return clientes;
 	}
 	
-
+	public void excluir(int id) {
+		try {
+			cliente.setId(id);
+			dao = new ClienteDAO();
+			if(dao.delete(cliente)) {
+				System.out.println("Deletado com sucesso");
+			} else {
+				System.out.println("Erro ao deletar");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
 
 	

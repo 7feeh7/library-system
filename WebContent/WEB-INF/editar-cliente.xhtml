@@ -4,7 +4,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="template.xhtml">
 	<ui:define name="content">
-		<h2>Cadastrar Cliente</h2>
+		<h2>Editar Cliente</h2>
 		<h:form>	
 			<h:panelGrid columns="1">
 				<h:outputLabel value="Nome:"/>
@@ -18,7 +18,7 @@
 				<h:outputLabel value="Telefone:"/>
 				<h:inputText class="b-input" value="#{clienteBean.cliente.telefone}"/>
 				
-				<h:commandButton class="btn-blue" value="Cadastrar" action="#{clienteBean.cadastrar}"></h:commandButton>
+				<h:commandButton class="btn-blue" value="Cadastrar" action="#{clienteBean.gravar}"></h:commandButton>
 				<h:commandButton class="btn-red" value="Cadastrar" action="#{clienteBean.gravar}"></h:commandButton>
 				<h:commandButton class="btn-blank" value="Cadastrar" action="#{clienteBean.gravar}"></h:commandButton>
 			</h:panelGrid>

@@ -38,7 +38,26 @@ public class ClienteDAO {
 			ConnectionFactory.closeConnection(con, ps);
 		}
 	}
+	public boolean edit(int id) {
+		Cliente cliente = new Cliente();
+		String sql = "SELECT * FROM cliente where=?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			cliente.setNome(rs.getString("nome"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setEmail(rs.getString("email"));
+			cliente.setEndereco(rs.getString("endereco"));
+			cliente.setTelefone(rs.getString("telefone"));
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
 
+	}
 	public List<Cliente> findAll() {
 		List<Cliente> clientes = new ArrayList<>();
 		String sql = "SELECT * FROM cliente";
@@ -74,12 +93,31 @@ public class ClienteDAO {
 
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setString(1, cliente.getNome());
+			ps.setString(2, cliente.getCpf());
+			ps.setString(3, cliente.getEmail());
+			ps.setString(4, cliente.getEndereco());
+			ps.setString(5, cliente.getTelefone());
+			ps.setInt(6, cliente.getId());
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.err.println("Erro: " + e);
+			return false;
+		} finally {
+			ConnectionFactory.closeConnection(con, ps);
+		}
+	}
+	
+	public boolean delete(Cliente cliente) {
+
+		String sql = "DELETE FROM cliente WHERE id=?";
+
+		PreparedStatement ps = null;
+
+		try {
+			ps = con.prepareStatement(sql);
 			ps.setInt(1, cliente.getId());
-			ps.setString(2, cliente.getNome());
-			ps.setString(3, cliente.getCpf());
-			ps.setString(4, cliente.getEmail());
-			ps.setString(5, cliente.getEndereco());
-			ps.setString(6, cliente.getTelefone());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
