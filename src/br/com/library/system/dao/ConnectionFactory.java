@@ -18,40 +18,40 @@ public class ConnectionFactory {
 			Class.forName(DRIVER);
 			return DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (SQLException | ClassNotFoundException  ex) {
-			throw new RuntimeException("Caralho", ex);
+			throw new RuntimeException("Erro ao estabelecer conexão: ", ex);
 		}
 	}
 
-	public static void closeConnection(Connection con) {
-		if (con != null) {
+	public static void closeConnection(Connection connection) {
+		if (connection != null) {
 			try {
-				con.close();
+				connection.close();
 			} catch (SQLException e) {
-				System.err.println("Error:" + e);
+				System.err.println("Error: " + e);
 			}
 		}
 	}
 
-	public static void closeConnection(Connection con, PreparedStatement ps) {
+	public static void closeConnection(Connection connection, PreparedStatement ps) {
 		if (ps != null) {
 			try {
 				ps.close();
-			} catch (SQLException e) {
-				System.err.println("Error:" + e);
+			} catch (SQLException ex) {
+				System.err.println("Error: " + ex);
 			}
 		}
-		closeConnection(con);
+		closeConnection(connection);
 	}
 	
-	public static void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
+	public static void closeConnection(Connection connection, PreparedStatement ps, ResultSet rs) {
 		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {
-				System.err.println("Error:" + e);
+			} catch (SQLException ex) {
+				System.err.println("Error:" + ex);
 			}
 		}
-		closeConnection(con, ps);
+		closeConnection(connection, ps);
 	}
 
 }

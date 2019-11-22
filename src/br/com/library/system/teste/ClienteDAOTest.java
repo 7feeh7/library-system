@@ -67,5 +67,13 @@ public class ClienteDAOTest {
 			fail("Erro ao atualizar");
 		}
 	}
+	@Test
+	public void editando() {
+		Cliente cliente = new Cliente();
+		ClienteDAO dao = new ClienteDAO();
+		cliente.setId(7);
+		dao.edit(cliente);
+		System.out.println(cliente.getNome());
+	}
 
 }

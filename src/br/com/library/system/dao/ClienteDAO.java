@@ -38,13 +38,19 @@ public class ClienteDAO {
 			ConnectionFactory.closeConnection(con, ps);
 		}
 	}
-	public boolean edit(Cliente cliente) {
-		String sql = "SELECT * FROM cliente where=?";
+	
+	public boolean edit(int id) {
+		System.out.println(id);
+		Cliente cliente = null;
+		String sql = "SELECT * FROM cliente";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
+			rs.next();
+			cliente = new Cliente();
+			cliente.setId(rs.getInt("id"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setEmail(rs.getString("email"));
@@ -52,11 +58,12 @@ public class ClienteDAO {
 			cliente.setTelefone(rs.getString("telefone"));
 			return true;
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e+"caralho");
 			return false;
 		}
-
+		
 	}
+	
 	public List<Cliente> findAll() {
 		List<Cliente> clientes = new ArrayList<>();
 		String sql = "SELECT * FROM cliente";
