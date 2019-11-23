@@ -2,21 +2,29 @@ package br.com.library.system.bean;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import br.com.library.system.model.Cliente;
 import br.com.library.system.dao.ClienteDAO;
 
 @ManagedBean(name = "clienteBean")
-@RequestScoped
+@SessionScoped
 public class ClienteBean{
 	
 	private ClienteDAO dao = null;
 	private Cliente cliente = new Cliente();
 	private DataModel<Cliente> clientes;
+	
+	public String novo() {
+		cliente = new Cliente();
+		return "/cadastrar-cliente.xhtml?faces-redirect=true";
+	}
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -26,26 +34,30 @@ public class ClienteBean{
 		this.clientes = clientes;
 	}
 	
-	public void cadastrar() {
+	public String cadastrar() {
 		dao = new ClienteDAO();
 		if (dao.save(cliente)) {
-			System.out.println("Salvo com sucesso!");
+			return "/listar-cliente.xhtml?faces-redirect=true";
 		} else {
-			System.out.println("Erro ao salvar");
+			return "/cadastrar-cliente.xhtml?faces-redirect=true";
 		}
 	}
 	
-	public void selecionar() {
+	public String selecionar() {
+//		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		cliente = clientes.getRowData();
+//		sessionMap.put("edit", cliente);
+		return "/editar-cliente.xhtml?faces-redirect=true";
 	}
 	
-	public void alterar(int id) {
+	public String alterar(int id) {
+		cliente.getNome();
 		dao = new ClienteDAO();
 		cliente.setId(id);
-		if(dao.update(cliente)) {
-			System.out.println("Alterado com sucesso!");
+		if( dao.update(cliente) ) {
+			return "/listar-cliente.xhtml?faces-redirect=true";
 		} else {
-			System.out.println("Erro ao alterar");
+			return "/editar-cliente.xhtml?faces-redirect=true";
 		}
 	}
 	

@@ -8,8 +8,8 @@
 			<h2>Lista Clientes</h2>
 		</center>
 		<h:form>	
-			
-		<h:dataTable value="#{clienteBean.clientes}" var="cliente">
+		<h:commandButton action="cadastrar-cliente.xhtml?faces-redirect=true" value="Novo" style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
+		<h:dataTable value="#{clienteBean.clientes}" var="cliente" >
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{cliente.id}"/>
@@ -36,8 +36,8 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">#</f:facet>
-				<h:commandButton action="#{clienteBean.editar(cliente.id)}" value="Atualizar"/>
-				<h:commandButton style="right:10px;" action="#{clienteBean.excluir(cliente.id)}" value="Deletar"/>
+				<h:commandButton action="#{clienteBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
+				<h:commandButton style="right:10px;background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{clienteBean.excluir(cliente.id)}"  value="Excluir"/>
 			</h:column>
 		</h:dataTable>
 		</h:form>

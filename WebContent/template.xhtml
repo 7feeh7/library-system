@@ -2,13 +2,12 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<title>Sistema de aluguel de livros</title>
-	
-	<!-- <style>
+	<style>
 	.b-input{
 		height:calc(1.5rem + 2px);
 		width:250px;
@@ -71,7 +70,7 @@
 	#menu ul li a:hover{
 		color: #6a737c;
 	}
-	</style>-->
+	</style>
 </h:head>
 <h:body>
 	<h1>Sistema de biblioteca</h1>
@@ -80,9 +79,8 @@
 		<div id="menu">
 			<ul>
 				<li><h:link value = "Home" outcome = "index" /></li>
-				<li><h:link value = "Cadastrar Cliente" outcome = "cadastrar-cliente" /></li>
-				<li><h:link value = "Listar Cliente" outcome = "listar-cliente" /></li>
-				<li><h:link value = "Cadastrar Livro" outcome = "cadastrar-livro" /></li>
+				<li><h:link value = "Clientes" outcome = "listar-cliente" /></li>
+				<li><h:link value = "Livros" outcome = "listar-livro" /></li>
 			</ul>
 	</div>
 	</ui:insert>

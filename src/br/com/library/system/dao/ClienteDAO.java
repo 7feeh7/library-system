@@ -43,17 +43,18 @@ public class ClienteDAO {
 		}
 	}
 	
-	public Cliente edit(int id) {
-		String sql = "SELECT * FROM cliente id="+(id);
+	public String edit(int id) {
+		System.out.println("Editar cliente id: " + id);
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		final String sql = "SELECT * FROM cliente id= "+(id);
+		Cliente cliente = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Cliente cliente = new Cliente();
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
-			if(rs != null) {
-				rs.next();
+			if(rs.next()) {
+				cliente = new Cliente();
 				cliente.setId(rs.getInt("id"));
 				cliente.setNome(rs.getString("nome"));
 				cliente.setCpf(rs.getString("cpf"));
@@ -61,12 +62,13 @@ public class ClienteDAO {
 				cliente.setEndereco(rs.getString("endereco"));
 				cliente.setTelefone(rs.getString("telefone"));
 			}
+			sessionMap.put("edit", cliente);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		} finally {
 			ConnectionFactory.closeConnection(con, ps, rs);
 		}
-		return cliente;
+		return "/editar-cliente.xhtml?faces-redirect=true";
 	}
 	
 	public List<Cliente> findAll() {
@@ -97,11 +99,9 @@ public class ClienteDAO {
 	}
 	
 	public boolean update(Cliente cliente) {
-
+		System.out.println(cliente.getNome());
 		String sql = "UPDATE cliente set nome=?, cpf=?, email=?, endereco=?, telefone=? WHERE id=?";
-
 		PreparedStatement ps = null;
-
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cliente.getNome());

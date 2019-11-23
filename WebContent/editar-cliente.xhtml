@@ -4,22 +4,23 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="template.xhtml">
 	<ui:define name="content">
-		<h2>Editar Cliente</h2>
+		<h2><center>Editar Cliente</center></h2>
 		<h:form>
 			<h:panelGrid>
 				<h:outputLabel style="font-weight:bold;" value="ID"/>
-				<h:inputText readonly="true" value="#{editarCliente.id}"/>
+				<h:inputText readonly="true" value="#{clienteBean.cliente.id}" class="b-input"/>
 				<h:outputLabel value="Nome:"/>
-				<h:inputText value="#{editarCliente.nome}" />
+				<h:inputText value="#{clienteBean.cliente.nome}" class="b-input"/>
 				<h:outputLabel value="CPF:"/>
-				<h:inputText value="#{clienteBean.cliente.cpf}"/>
+				<h:inputText value="#{clienteBean.cliente.cpf}" class="b-input"/>
 				<h:outputLabel value="E-mail"/>
-				<h:inputText value="#{clienteBean.cliente.email}" />
+				<h:inputText value="#{clienteBean.cliente.email}" class="b-input"/>
 				<h:outputLabel value="Endereco"/>
-				<h:inputText value="#{clienteBean.cliente.endereco}" />
+				<h:inputText value="#{clienteBean.cliente.endereco}" class="b-input"/>
 				<h:outputLabel value="Telefone"/>
-				<h:inputText value="#{clienteBean.cliente.telefone}" />
-				<h:commandButton value="Alterar" action="#{clienteBean.alterar(clienteBean.cliente.id)}"/>
+				<h:inputText value="#{clienteBean.cliente.telefone}" class="b-input"/>
+				<h:commandButton value="Atualizar" action="#{clienteBean.alterar(clienteBean.cliente.id)}"  class="btn-blue"/>
+				<h:commandButton class="btn-blank" value="Voltar"  action="/listar-cliente.xhtml?faces-redirect=true"/>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

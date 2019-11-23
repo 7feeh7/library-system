@@ -72,7 +72,7 @@ public class ClienteDAOTest {
 		Cliente cliente = new Cliente();
 		ClienteDAO dao = new ClienteDAO();
 		cliente.setId(7);
-		dao.edit(cliente);
+		dao.edit(1);
 		System.out.println(cliente.getNome());
 	}
 
