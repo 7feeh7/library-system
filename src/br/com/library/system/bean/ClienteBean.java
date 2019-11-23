@@ -1,32 +1,22 @@
 package br.com.library.system.bean;
 
-import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-
-import com.sun.faces.context.SessionMap;
-
 import br.com.library.system.model.Cliente;
 import br.com.library.system.dao.ClienteDAO;
-import br.com.library.system.dao.ConnectionFactory;
 
 @ManagedBean(name = "clienteBean")
-@SessionScoped
-public class ClienteBean implements Serializable{
+@RequestScoped
+public class ClienteBean{
 	
 	private ClienteDAO dao = null;
 	private Cliente cliente = new Cliente();
 	private DataModel<Cliente> clientes;
-	private Connection con = null;
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -45,9 +35,8 @@ public class ClienteBean implements Serializable{
 		}
 	}
 	
-	public String selecionar() {
+	public void selecionar() {
 		cliente = clientes.getRowData();
-		return "/editar-cliente.xhtml?faces-redirect=true";
 	}
 	
 	public void alterar(int id) {
@@ -82,11 +71,8 @@ public class ClienteBean implements Serializable{
 	}
 	
 	public String editar(int id) {
-		ClienteDAO dao = new ClienteDAO();
-		if(dao.edit(id)) {
-			return "/editar-cliente.xhtml?faces-redirect=true";
-		}
-		return "/listar-cliente.xhtml?faces-redirect=true";
+		dao = new ClienteDAO();
+		return dao.edit(id);
 	}
-	
+
 }

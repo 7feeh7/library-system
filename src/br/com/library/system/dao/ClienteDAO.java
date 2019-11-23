@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+
 import br.com.library.system.model.Cliente;
 
 public class ClienteDAO {
@@ -39,29 +43,30 @@ public class ClienteDAO {
 		}
 	}
 	
-	public boolean edit(int id) {
-		System.out.println(id);
-		Cliente cliente = null;
-		String sql = "SELECT * FROM cliente";
+	public Cliente edit(int id) {
+		String sql = "SELECT * FROM cliente id="+(id);
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		Cliente cliente = new Cliente();
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			rs.next();
-			cliente = new Cliente();
-			cliente.setId(rs.getInt("id"));
-			cliente.setNome(rs.getString("nome"));
-			cliente.setCpf(rs.getString("cpf"));
-			cliente.setEmail(rs.getString("email"));
-			cliente.setEndereco(rs.getString("endereco"));
-			cliente.setTelefone(rs.getString("telefone"));
-			return true;
+			
+			if(rs != null) {
+				rs.next();
+				cliente.setId(rs.getInt("id"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setCpf(rs.getString("cpf"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setTelefone(rs.getString("telefone"));
+			}
 		} catch (Exception e) {
-			System.out.println(e+"caralho");
-			return false;
+			// TODO: handle exception
+		} finally {
+			ConnectionFactory.closeConnection(con, ps, rs);
 		}
-		
+		return cliente;
 	}
 	
 	public List<Cliente> findAll() {

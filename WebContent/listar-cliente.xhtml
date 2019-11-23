@@ -36,7 +36,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">#</f:facet>
-				<h:commandButton action="#{clienteBean.selecionar}" value="Atualizar"/>
+				<h:commandButton action="#{clienteBean.editar(cliente.id)}" value="Atualizar"/>
 				<h:commandButton style="right:10px;" action="#{clienteBean.excluir(cliente.id)}" value="Deletar"/>
 			</h:column>
 		</h:dataTable>
