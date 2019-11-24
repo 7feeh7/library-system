@@ -8,24 +8,24 @@
 		<h:form id="form">	
 			<h:panelGrid columns="1">
 			
-				<h:outputLabel value="Nome:"/>
-				<h:inputText class="b-input" value="#{clienteBean.cliente.nome}" id="nome" required="true"/>
-				<h:message for="nome"></h:message>
+				<h:outputLabel value="Nome:*"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.nome}" id="nome" required="true" requiredMessage="Campo Obrigatorio"/>
+				<h:message for="nome" style="color:red;"/>
 				
-				<h:outputLabel value="CPF:"/>
-				<h:inputText class="b-input" value="#{clienteBean.cliente.cpf}" id="cpf"  required="true"/>
-				<h:message for="cpf"></h:message>
+				<h:outputLabel value="CPF:*"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.cpf}" id="cpf"  required="true" requiredMessage="Campo Obrigatorio"/>
+				<h:message for="cpf" style="color:red;" />
 				
 				<h:outputLabel value="E-mail:"/>
 				<h:inputText class="b-input" value="#{clienteBean.cliente.email}" id="email"/>
 				
-				<h:outputLabel value="Endereco:"/>
-				<h:inputText class="b-input" value="#{clienteBean.cliente.endereco}" id="endereco"  required="true"/>
-				<h:message for="endereco"></h:message>
+				<h:outputLabel value="Endereco:*"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.endereco}" id="endereco" required="true" requiredMessage="Campo Obrigatorio"/>
+				<h:message for="endereco" style="color:red;" />
 				
-				<h:outputLabel value="Telefone:"/>
-				<h:inputText class="b-input" value="#{clienteBean.cliente.telefone}" id="telefone"  required="true"/>
-				<h:message for="telefone"></h:message>
+				<h:outputLabel value="Telefone:*"/>
+				<h:inputText class="b-input" value="#{clienteBean.cliente.telefone}" id="telefone" required="true" requiredMessage="Campo Obrigatorio"/>
+				<h:message for="telefone" style="color:red;" />
 				
 				<h:commandButton class="btn-blue" value="Cadastrar" action="#{clienteBean.cadastrar}"></h:commandButton>
 				<h:commandButton class="btn-blank" value="Voltar"  action="/listar-cliente.xhtml?faces-redirect=true"/>

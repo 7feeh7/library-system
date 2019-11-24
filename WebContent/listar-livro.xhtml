@@ -8,7 +8,40 @@
 			<h2>Lista Livros</h2>
 		</center>
 		<h:form>	
-
+			<h:dataTable value="#{livroBean.livros}" var ="livro" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{livro.id}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Titulo</f:facet>
+					<h:outputText value="#{livro.titulo}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Autor</f:facet>
+					<h:outputText value="#{livro.titulo}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Categoria</f:facet>
+					<h:outputText value="#{livro.categoria}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Publicado</f:facet>
+					<h:outputText value="#{livro.data_publicacao}">
+						<f:convertDateTime pattern="dd/mm/yyyy" timeZone="America/Fortaleza" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:commandButton action="#{livroBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
+					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{livroBean.excluir(livro.id)}"  value="Excluir"/>
+				</h:column>
+				<h:column>
+				<f:facet name="header">
+					<h:commandButton action="cadastrar-livro.xhtml?faces-redirect=true" value="Cadastrar" style="right:25%;background:#28a745;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
+				</f:facet>
+			</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

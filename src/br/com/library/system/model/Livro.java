@@ -2,6 +2,7 @@ package br.com.library.system.model;
 
 public class Livro {
 	
+	private int id;
 	private String titulo;
 	private String autor;
 	private String categoria;
@@ -18,6 +19,15 @@ public class Livro {
 		this.data_publicacao = data_publicacao;
 	}
 	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}

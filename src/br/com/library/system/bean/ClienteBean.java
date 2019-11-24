@@ -20,12 +20,7 @@ public class ClienteBean{
 	private ClienteDAO dao = null;
 	private Cliente cliente = new Cliente();
 	private DataModel<Cliente> clientes;
-	
-	public String novo() {
-		cliente = new Cliente();
-		return "/cadastrar-cliente.xhtml?faces-redirect=true";
-	}
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -51,7 +46,6 @@ public class ClienteBean{
 	}
 	
 	public String alterar(int id) {
-		cliente.getNome();
 		dao = new ClienteDAO();
 		cliente.setId(id);
 		if( dao.update(cliente) ) {

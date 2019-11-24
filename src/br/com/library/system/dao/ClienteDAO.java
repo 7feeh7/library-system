@@ -99,7 +99,6 @@ public class ClienteDAO {
 	}
 	
 	public boolean update(Cliente cliente) {
-		System.out.println(cliente.getNome());
 		String sql = "UPDATE cliente set nome=?, cpf=?, email=?, endereco=?, telefone=? WHERE id=?";
 		PreparedStatement ps = null;
 		try {

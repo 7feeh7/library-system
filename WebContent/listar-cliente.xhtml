@@ -4,12 +4,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="template.xhtml">
 	<ui:define name="content">
-		<center>		
-			<h2>Lista Clientes</h2>
-		</center>
+		<center><h2>Lista Clientes</h2></center>
 		<h:form>	
-		<h:commandButton action="cadastrar-cliente.xhtml?faces-redirect=true" value="Novo" style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
-		<h:dataTable value="#{clienteBean.clientes}" var="cliente" >
+		<h:dataTable value="#{clienteBean.clientes}" var="cliente" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{cliente.id}"/>
@@ -23,7 +20,7 @@
 				<h:outputText value="#{cliente.cpf}"/>
 			</h:column>
 			<h:column>
-				<f:facet name="header">email</f:facet>
+				<f:facet name="header">E-mail</f:facet>
 				<h:outputText value="#{cliente.email}"/>
 			</h:column>
 			<h:column>
@@ -37,7 +34,12 @@
 			<h:column>
 				<f:facet name="header">#</f:facet>
 				<h:commandButton action="#{clienteBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
-				<h:commandButton style="right:10px;background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{clienteBean.excluir(cliente.id)}"  value="Excluir"/>
+				<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{clienteBean.excluir(cliente.id)}"  value="Excluir"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:commandButton action="cadastrar-cliente.xhtml?faces-redirect=true" value="Cadastrar" style="right:25%;background:#28a745;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
+				</f:facet>
 			</h:column>
 		</h:dataTable>
 		</h:form>

@@ -4,9 +4,12 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="template.xhtml">
 	<ui:define name="content">
-		<center><h2>Cadastrar Livro</h2></center>
-		<h:form id="form">	
-			<h:panelGrid columns="1">
+		<h2><center>Editar Livro</center></h2>
+		<h:form>
+			<h:panelGrid>
+				<h:outputLabel style="font-weight:bold;" value="ID"/>
+				<h:inputText readonly="true" value="#{livroBean.livro.id}" class="b-input"/>
+				
 				<h:outputLabel value="Titulo:*"/>
 				<h:inputText class="b-input" value="#{livroBean.livro.titulo}" id="titulo" required="true" requiredMessage="Campo Obrigatorio"/>
 				<h:message for="titulo" style="color:red;"/>
@@ -25,15 +28,9 @@
 				</h:inputText>
 				<h:message for="dt_publicacao" style="color:red;"/>
 				
-				<h:commandButton class="btn-blue" value="Cadastrar" action="#{livroBean.cadastrar}"></h:commandButton>
-				<h:commandButton class="btn-blank" value="Voltar"  action="/listar-livro.xhtml?faces-redirect=true"/>
+				<h:commandButton value="Atualizar" action="#{livroBean.alterar(livroBean.livro.id)}"  class="btn-blue"/>
+				<h:commandButton class="btn-blank" value="Voltar"  action="/listar-cliente.xhtml?faces-redirect=true"/>
 			</h:panelGrid>
 		</h:form>
-		<script type="text/javascript">
-			var titulo = document.getElementById('form:titulo').value = "";
-			var autor = document.getElementById('form:autor').value = "";
-			var categoria = document.getElementById('form:categoria').value = "";
-			var dt_publicacao = document.getElementById('form:dt_publicacao').value = "";
-		</script>
 	</ui:define>
 </ui:composition>

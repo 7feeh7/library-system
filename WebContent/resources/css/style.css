@@ -1,0 +1,95 @@
+/**
+* Estilos de todos os componentes do sistema
+*/
+*{
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/**
+* Botões de tabelas e formularios
+*/
+.b-input{
+	height:calc(1.5rem + 2px);
+	width:250px;
+	border:1px solid #ced4da;
+	border-radius:.25rem;
+}
+	
+.btn-blue{
+	background: #0095ff;
+	border:1px solid #ced4da;
+	border-radius:.25rem;
+	color:white;
+	height:calc(2.0rem + 2px);
+	width: 100%;
+}
+.btn-blue:hover{
+	color:#fff;
+	background-color:#07c;
+	border-color:#fff;
+}
+.btn-red{
+	border:1px solid #ced4da;
+	border-radius:.25rem;
+	background-color:#c91d2e;
+	color:white;
+	height:calc(2.0rem + 2px);
+	width: 100%;
+}
+.btn-red:hover{
+	color:#fff;
+	background-color:#9c1724;
+	border-color:#fff;
+}
+.btn-blank{
+	border:1px solid #adb3b9;
+	border-radius:.25rem;
+	background-color:#fff;
+	color:#adb3b9;
+	height:calc(2.0rem + 2px);
+	width: 100%;
+}
+.btn-blank:hover{
+	border-color: #adb3b9;
+	color: #6a737c;
+}
+
+/**
+* Estilo Referente ao menu do sistema
+*/
+#menu ul{
+	margin: 0;
+	background-color: #0095ff;
+	list-style: none;
+}
+#menu ul li{
+	display: inline;
+}
+#menu ul li a{
+	padding: 10px 10px;
+	display: inline-block;
+	color:white;
+	text-decoration:none;
+}
+#menu ul li a:hover{
+	color: #6a737c;
+}
+	
+/**
+* Estilizando tabelas do sistema
+*/
+.table{
+	margin:auto;
+	width:70%;
+	border-collapse: collapse;
+	border: 1px solid #dee2e6;
+}
+.tableHeader{
+	text-align:center;
+	border-bottom: 2px solid #dee2e6;
+	padding:2px;
+}
+.tableRow{
+	text-align:center;
+	border-bottom: 2px solid #dee2e6;
+   	background:none repeat scroll 0 0 #FFFFFFF;
+}
