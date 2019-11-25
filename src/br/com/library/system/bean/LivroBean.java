@@ -1,6 +1,7 @@
 package br.com.library.system.bean;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,18 +11,38 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 import br.com.library.system.dao.LivroDAO;
 import br.com.library.system.model.Livro;
 
-@ManagedBean(name = "livroBean")
+@ManagedBean(name = "livroBean", eager = true)
 @SessionScoped
 public class LivroBean {
 	
 	private LivroDAO dao = null;
 	private Livro livro = new Livro();
 	private DataModel<Livro> livros;
+	private List<SelectItem> livrosSelect;
 	
+	
+	
+	public List<SelectItem> getLivrosSelect() {
+		if(livrosSelect == null) {
+			livrosSelect = new ArrayList<SelectItem>();
+			dao = new LivroDAO();
+			List<Livro> listaLivros = dao.findAll();
+			SelectItem item;
+			for(Livro livro : listaLivros) {
+				item = new SelectItem();
+				item.setLabel(livro.getTitulo());
+				item.setValue(livro.getId());
+				livrosSelect.add(item);
+			}
+		}
+		return livrosSelect;
+	}
+
 	public Livro getLivro() {
 		return livro;
 	}

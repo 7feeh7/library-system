@@ -1,0 +1,37 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		template="template.xhtml">
+		
+	<ui:define name="content">
+		<h2><center>Cadastrar Aluguel</center></h2>
+		<h:form id="form">	
+			<h:panelGrid columns="1">
+			
+				<h:outputLabel value="Cliente:*"/>
+				<h:selectOneMenu class="b-input">
+					<f:selectItems  value="#{clienteBean.clientesSelect}" var="cliente" itemValue="#{cliente.key}" itemLabel="#{cliente.value}"/>
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Livro:*"/>
+				<h:selectOneMenu class="b-input">
+					<f:selectItems value="#{livroBean.livrosSelect}" var="livro" itemValue="#{livro.key}" itemLabel="#{livro.value}"/>
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Data Emprestimo:*"/>
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_emprestimo}" required="true" requiredMessage="Campo Obrigatorio">
+					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
+				</h:inputText>
+				
+				<h:outputLabel value="Data Previsao:*"/>
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_previsao}" required="true" requiredMessage="Campo Obrigatorio">
+					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
+				</h:inputText>
+	
+				
+				<h:commandButton class="btn-blue" value="Cadastrar" action="#{aluguelBean.cadastrar(clienteBean.clientesSelect.key,livroBean.livrosSelect.key)}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

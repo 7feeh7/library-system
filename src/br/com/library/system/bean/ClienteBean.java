@@ -1,6 +1,7 @@
 package br.com.library.system.bean;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,16 +11,36 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
+
 import br.com.library.system.model.Cliente;
 import br.com.library.system.dao.ClienteDAO;
 
-@ManagedBean(name = "clienteBean")
+@ManagedBean(name = "clienteBean", eager = true)
 @SessionScoped
 public class ClienteBean{
 	
 	private ClienteDAO dao = null;
 	private Cliente cliente = new Cliente();
 	private DataModel<Cliente> clientes;
+	private List<SelectItem> clientesSelect;
+	
+	
+	public List<SelectItem> getClientesSelect() {
+		if(clientesSelect == null) {	
+			clientesSelect = new ArrayList<SelectItem>();
+			dao = new ClienteDAO();
+			List<Cliente> listaCliente = dao.findAll();
+			SelectItem item;
+			for(Cliente clienteLista : listaCliente) {
+				item = new SelectItem();
+				item.setLabel(clienteLista.getNome());
+				item.setValue(clienteLista.getId());
+				clientesSelect.add(item);
+			}
+		}
+		return clientesSelect;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -39,9 +60,7 @@ public class ClienteBean{
 	}
 	
 	public String selecionar() {
-//		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		cliente = clientes.getRowData();
-//		sessionMap.put("edit", cliente);
 		return "/editar-cliente.xhtml?faces-redirect=true";
 	}
 	
