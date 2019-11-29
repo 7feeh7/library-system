@@ -29,7 +29,7 @@ public class AluguelDAO {
 			ps.setInt(2, aluguel.getLivro_id());
 			ps.setString(3, aluguel.getData_emprestimo());
 			ps.setString(4, aluguel.getData_previsao());
-			ps.setString(5, "");
+			ps.setString(5, aluguel.getData_devolucao());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {

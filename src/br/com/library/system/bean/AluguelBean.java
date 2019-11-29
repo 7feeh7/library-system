@@ -30,6 +30,7 @@ public class AluguelBean {
 	
 	public void cadastrar() {
 		dao = new AluguelDAO();
+		aluguel.setData_devolucao(" ");
 		if(dao.save(aluguel)) {
 			System.out.println("sim");
 		} else {
