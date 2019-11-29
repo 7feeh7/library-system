@@ -4,7 +4,26 @@ public class Aluguel {
 
 	private int id;
 	private Cliente cliente;
+	private int cliente_id;
 	private Livro livro;
+	private int livro_id;
+	
+	public int getCliente_id() {
+		return cliente_id;
+	}
+
+	public void setCliente_id(int cliente_id) {
+		this.cliente_id = cliente_id;
+	}
+
+	public int getLivro_id() {
+		return livro_id;
+	}
+
+	public void setLivro_id(int livro_id) {
+		this.livro_id = livro_id;
+	}
+
 	private String data_emprestimo;
 	private String data_previsao;
 	private String data_devolucao;

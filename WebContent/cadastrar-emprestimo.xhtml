@@ -9,27 +9,27 @@
 			<h:panelGrid columns="1">
 			
 				<h:outputLabel value="Cliente:*"/>
-				<h:selectOneMenu class="b-input">
+				<h:selectOneMenu class="b-input" value="#{aluguelBean.aluguel.cliente_id}">
 					<f:selectItems  value="#{clienteBean.clientesSelect}" var="cliente" itemValue="#{cliente.key}" itemLabel="#{cliente.value}"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Livro:*"/>
-				<h:selectOneMenu class="b-input">
+				<h:selectOneMenu class="b-input" value="#{aluguelBean.aluguel.livro_id}">
 					<f:selectItems value="#{livroBean.livrosSelect}" var="livro" itemValue="#{livro.key}" itemLabel="#{livro.value}"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Data Emprestimo:*"/>
-				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_emprestimo}" required="true" requiredMessage="Campo Obrigatorio">
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_emprestimo}" >
 					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
 				</h:inputText>
 				
 				<h:outputLabel value="Data Previsao:*"/>
-				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_previsao}" required="true" requiredMessage="Campo Obrigatorio">
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_previsao}" >
 					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
 				</h:inputText>
-	
+
 				
-				<h:commandButton class="btn-blue" value="Cadastrar" action="#{aluguelBean.cadastrar(clienteBean.clientesSelect.key,livroBean.livrosSelect.key)}"></h:commandButton>
+				<h:commandButton class="btn-blue" value="Cadastrar" action="#{aluguelBean.cadastrar}"></h:commandButton>
 			</h:panelGrid>
 		</h:form>
 

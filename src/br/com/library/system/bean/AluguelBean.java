@@ -28,19 +28,25 @@ public class AluguelBean {
 		this.alugueis = alugueis;
 	}
 	
-	public void cadastrar(int id_cliente, int id_livvro) {
+	public void cadastrar() {
 		dao = new AluguelDAO();
-		
-		Cliente cliente = new Cliente();
-		cliente.setId(id_cliente);
-		Livro livro = new Livro();
-		livro.setId(id_livvro);
-		
 		if(dao.save(aluguel)) {
-			System.out.println("Cadastrou");
+			System.out.println("sim");
 		} else {
-			System.out.println("Nao cadastrou");
+			System.out.println("não");
 		}
+//		dao = new AluguelDAO();
+//		
+//		Cliente cliente = new Cliente();
+//		cliente.setId(id_cliente);
+//		Livro livro = new Livro();
+//		livro.setId(id_livvro);
+//		
+//		if(dao.save(aluguel)) {
+//			System.out.println("Cadastrou");
+//		} else {
+//			System.out.println("Nao cadastrou");
+//		}
 	}
 	
 	public DataModel<Aluguel>getAlugueis(){

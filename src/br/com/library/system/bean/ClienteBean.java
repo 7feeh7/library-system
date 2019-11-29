@@ -64,6 +64,8 @@ public class ClienteBean{
 		return "/editar-cliente.xhtml?faces-redirect=true";
 	}
 	
+	
+	
 	public String alterar(int id) {
 		dao = new ClienteDAO();
 		cliente.setId(id);

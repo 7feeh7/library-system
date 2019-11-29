@@ -25,11 +25,11 @@ public class AluguelDAO {
 		PreparedStatement ps = null;
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setInt(1, aluguel.getCliente().getId());
-			ps.setInt(2, aluguel.getLivro().getId());
+			ps.setInt(1, aluguel.getCliente_id());
+			ps.setInt(2, aluguel.getLivro_id());
 			ps.setString(3, aluguel.getData_emprestimo());
 			ps.setString(4, aluguel.getData_previsao());
-			ps.setString(5, aluguel.getData_devolucao());
+			ps.setString(5, "");
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
