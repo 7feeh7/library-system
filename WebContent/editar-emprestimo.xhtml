@@ -1,0 +1,21 @@
+<ui:composition
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="template.xhtml">
+	<ui:define name="content">
+		<h2><center>Editar Emprestimo</center></h2>
+		<h:form>
+			<h:panelGrid>
+				<h:outputLabel style="font-weight:bold;" value="ID"/>
+				<h:inputText readonly="true" value="#{aluguelBean.aluguel.id}" class="b-input"/>
+				
+				<h:outputLabel value="Data de devolucao:*"/>
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_devolucao}" id="titulo" required="true" requiredMessage="Campo Obrigatorio"/>
+				<h:message for="titulo" style="color:red;"/>
+			
+				<h:commandButton value="Confirmar" action="#{aluguelBean.alterar(aluguelBean.aluguel.id)}"  class="btn-blue"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

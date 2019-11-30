@@ -34,7 +34,7 @@
 				<h:column>
 					<f:facet name="header">#</f:facet>
 					<h:commandButton action="#{livroBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
-					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{livroBean.excluir(livro.id)}"  value="Excluir"/>
+					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{livroBean.excluir(livro.id)}" onclick="if (!deleteLivro()) return false;"  value="Excluir"/>
 				</h:column>
 				<h:column>
 				<f:facet name="header">
@@ -43,5 +43,10 @@
 			</h:column>
 			</h:dataTable>
 		</h:form>
+		<script type="text/javascript">
+			function deleteLivro(link) {
+			       return confirm("Tem certeza que deseja excluir esse livro?");
+			 }
+		</script>
 	</ui:define>
 </ui:composition>

@@ -6,42 +6,42 @@
 	<ui:define name="content">
 		<center><h2>Lista Clientes</h2></center>
 		<h:form>	
-		<h:dataTable value="#{clienteBean.clientes}" var="cliente" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
-			<h:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{cliente.id}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{cliente.nome}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">CPF</f:facet>
-				<h:outputText value="#{cliente.cpf}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">E-mail</f:facet>
-				<h:outputText value="#{cliente.email}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Endereco</f:facet>
-				<h:outputText value="#{cliente.endereco}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Telefone</f:facet>
-				<h:outputText value="#{cliente.telefone}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">#</f:facet>
-				<h:commandButton action="#{clienteBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
-				<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{clienteBean.excluir(cliente.id)}" onclick="if (!deleteUser()) return false;"  value="Excluir"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:commandButton action="cadastrar-cliente.xhtml?faces-redirect=true" value="Cadastrar" style="right:25%;background:#28a745;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
-				</f:facet>
-			</h:column>
-		</h:dataTable>
+			<h:dataTable value="#{clienteBean.clientes}" var="cliente" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{cliente.id}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{cliente.nome}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">CPF</f:facet>
+					<h:outputText value="#{cliente.cpf}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{cliente.email}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Endereco</f:facet>
+					<h:outputText value="#{cliente.endereco}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Telefone</f:facet>
+					<h:outputText value="#{cliente.telefone}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:commandButton action="#{clienteBean.selecionar}"  style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
+					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{clienteBean.excluir(cliente.id)}" onclick="if (!deleteUser()) return false;"  value="Excluir"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:commandButton action="cadastrar-cliente.xhtml?faces-redirect=true" value="Cadastrar" style="right:25%;background:#28a745;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;"/>
+					</f:facet>
+				</h:column>
+			</h:dataTable>
 		</h:form>
 		<script type="text/javascript">
 			function deleteUser(link) {

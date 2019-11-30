@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.library.system.model.Aluguel;
@@ -21,15 +22,16 @@ public class AluguelDAO {
 	}
 	
 	public boolean save(Aluguel aluguel) {
-		String sql = "INSERT INTO emprestimo (id_cliente, id_livro, data_emprestimo, data_previsao, data_devolucao) VALUES (?,?,?,?,?)";
+		SimpleDateFormat dataFormatada = new SimpleDateFormat("yyyy-MM-dd");
+		String sql = "INSERT INTO emprestimo (id_cliente, id_livro, data_empre"
+				+ "stimo, data_previsao) VALUES (?,?,?,?)";
 		PreparedStatement ps = null;
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, aluguel.getCliente_id());
 			ps.setInt(2, aluguel.getLivro_id());
-			ps.setString(3, aluguel.getData_emprestimo());
-			ps.setString(4, aluguel.getData_previsao());
-			ps.setString(5, aluguel.getData_devolucao());
+			ps.setString(3, aluguel.getData_emprestimo().replace("/", ""));
+			ps.setString(4, aluguel.getData_previsao().replace("/", ""));
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -82,9 +84,10 @@ public class AluguelDAO {
 				
 				dt_previsao = dataFormatada.format(rs.getDate("dt_previsao"));
 				aluguel.setData_previsao(dt_previsao);
+
+				aluguel.setData_devolucao(rs.getString("dt_devolucao"));
 				
-				dt_devolucao = dataFormatada.format(rs.getDate("dt_devolucao"));
-				aluguel.setData_devolucao(dt_devolucao);
+				
 				alugueis.add(aluguel);
 			}
 		} catch (SQLException e) {
@@ -93,6 +96,23 @@ public class AluguelDAO {
 			ConnectionFactory.closeConnection(connection, ps, rs);
 		}
 		return alugueis;
+	}
+	
+	public boolean update(Aluguel aluguel) {
+		PreparedStatement ps = null;
+		String sql = "UPDATE emprestimo set data_devolucao=? WHERE id=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, aluguel.getData_devolucao());
+			ps.setInt(2, aluguel.getId());
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException ex) {
+			System.err.println("Erro: " + ex);
+			return false;
+		} finally {
+			ConnectionFactory.closeConnection(connection, ps);
+		}
 	}
 	
 	public boolean delete(Aluguel aluguel) {

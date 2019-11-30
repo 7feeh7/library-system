@@ -8,7 +8,7 @@
 			<h2>Alugueis</h2>
 		</center>
 		<h:form>	
-			<h:dataTable value="#{aluguelBean.alugueis}" var="aluguel" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
+			<h:dataTable value="#{aluguelBean.alugueis}" id="oi" var="aluguel" styleClass="table" headerClass="tableHeader" rowClasses="tableRow">
 				<h:column>
 					<f:facet name="header">ID</f:facet>
 					<h:outputText value="#{aluguel.id}"/>
@@ -36,13 +36,13 @@
 				<h:column>
 					<f:facet name="header">Data de entrega</f:facet>
 					<h:outputText value="#{aluguel.data_devolucao}">
-						<f:convertDateTime pattern="dd/mm/yyyy" timeZone="America/Fortaleza" />
+						<f:convertDateTime pattern="dd/mm/yyyy" timeZone="America/Fortaleza" id="entrega" />
 					</h:outputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">#</f:facet>
-					<h:commandButton style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" value="Editar"/>
-					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{aluguelBean.excluir(aluguel.id)}" value="Excluir"/>
+					<h:commandButton style="right:10px;background:#0095ff;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{aluguelBean.selecionar}" value="Editar"/>
+					<h:commandButton style="background:#c91d2e;color:white;border:1px solid #ced4da;border-radius:.25rem;height:30px;" action="#{aluguelBean.excluir(aluguel.id)}" onclick="if (!deleteAluguel()) return false;" value="Excluir"/>
 				</h:column>
 				<h:column>
 				<f:facet name="header">
@@ -51,5 +51,10 @@
 			</h:column>
 			</h:dataTable>
 		</h:form>
+		<script type="text/javascript">
+			function deleteAluguel(link) {
+			       return confirm("Tem certeza que deseja excluir esse emprestimo?");
+			 }
+		</script>
 	</ui:define>
 </ui:composition>

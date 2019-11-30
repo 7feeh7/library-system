@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Nov-2019 às 03:52
+-- Tempo de geração: 30-Nov-2019 às 03:57
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -42,8 +42,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `email`, `endereco`, `telefone`) VALUES
-(12, 'Felipe Pires Soares', '047.762.153-81', 'felipe.pires.soaresti@gmail.com', 'Rua ', '85989465100'),
-(22, 'Testes', '047.762.135-81', 'teste@teste.com', 'Rua 2', '85989465100');
+(25, 'Felipe Pires Soares', '04776215381', 'felipe.pires.soaresti@gmail.com', 'Rua 2', '85989465100');
 
 -- --------------------------------------------------------
 
@@ -57,7 +56,7 @@ CREATE TABLE `emprestimo` (
   `id_livro` int(11) NOT NULL,
   `data_emprestimo` date NOT NULL,
   `data_previsao` date NOT NULL,
-  `data_devolucao` date DEFAULT NULL
+  `data_devolucao` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -65,7 +64,8 @@ CREATE TABLE `emprestimo` (
 --
 
 INSERT INTO `emprestimo` (`id`, `id_cliente`, `id_livro`, `data_emprestimo`, `data_previsao`, `data_devolucao`) VALUES
-(1, 12, 7, '2019-11-24', '2019-12-01', '2019-12-07');
+(13, 25, 9, '2019-03-15', '2019-03-15', '30/11/2019'),
+(19, 25, 9, '2019-03-15', '2019-03-15', '29/11/2019');
 
 -- --------------------------------------------------------
 
@@ -86,9 +86,8 @@ CREATE TABLE `livro` (
 --
 
 INSERT INTO `livro` (`id`, `titulo`, `autor`, `categoria`, `data_publicacao`) VALUES
-(6, 'Código limpo', 'Robert C. Martin', 'Design de software', '2009-09-08'),
-(7, 'O Jovem Lennon', 'Jordi Sierra I Fabra', ' Biografias de Artistas, Arquitetos e Fotógrafos', '1995-05-15'),
-(8, 'aaa', 'aaa', 'aaa', '2018-03-22');
+(9, 'teste', 'eu', 'teste', '1999-11-13'),
+(10, 'aa', 'aaa', 'aa', '1999-11-13');
 
 --
 -- Índices para tabelas despejadas
@@ -123,19 +122,19 @@ ALTER TABLE `livro`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `livro`
 --
 ALTER TABLE `livro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas

@@ -40,7 +40,6 @@ public class LivroDAO {
 	public List<Livro> findAll() {
 		List<Livro> livros = new ArrayList<Livro>();
 		String sql = "SELECT * FROM livro";
-		SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
 		String date;
 		try {
 			ps = connection.prepareStatement(sql);
@@ -51,8 +50,7 @@ public class LivroDAO {
 				livro.setTitulo(rs.getString("titulo"));
 				livro.setAutor(rs.getString("autor"));
 				livro.setCategoria(rs.getString("categoria"));
-				date = dataFormatada.format(rs.getDate("data_publicacao"));
-				livro.setData_publicacao(date);
+				livro.setData_publicacao(rs.getString("data_publicacao"));
 				livros.add(livro);
 			}
 

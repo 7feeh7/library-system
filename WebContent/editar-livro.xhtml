@@ -23,9 +23,7 @@
 				<h:message for="categoria" style="color:red;"/>
 				
 				<h:outputLabel value="Data Publicacao:*"/>
-				<h:inputText class="b-input" value="#{livroBean.livro.data_publicacao}" id="dt_publicacao" required="true" placeholder="aaa" requiredMessage="Campo Obrigatorio">
-					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
-				</h:inputText>
+				<h:inputText class="b-input" value="#{livroBean.livro.data_publicacao}" id="dt_publicacao" required="true" placeholder="aaa" requiredMessage="Campo Obrigatorio"/>
 				<h:message for="dt_publicacao" style="color:red;"/>
 				
 				<h:commandButton value="Atualizar" action="#{livroBean.alterar(livroBean.livro.id)}"  class="btn-blue"/>

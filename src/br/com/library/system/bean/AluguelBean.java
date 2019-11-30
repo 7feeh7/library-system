@@ -1,5 +1,8 @@
 package br.com.library.system.bean;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -27,27 +30,22 @@ public class AluguelBean {
 	public void setAlugueis(DataModel<Aluguel> alugueis) {
 		this.alugueis = alugueis;
 	}
+	public String selecionar() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		aluguel = alugueis.getRowData();
+		aluguel.setData_devolucao(dateFormat.format(date));
+		return "/editar-emprestimo.xhtml?faces-redirect=true";
+	}
 	
-	public void cadastrar() {
+	public String cadastrar() {
 		dao = new AluguelDAO();
 		aluguel.setData_devolucao(" ");
 		if(dao.save(aluguel)) {
-			System.out.println("sim");
+			return "/listar-emprestimo.xhtml?faces-redirect=true";
 		} else {
-			System.out.println("não");
+			return "/cadastrar-emprestimo.xhtml?faces-redirect=true";
 		}
-//		dao = new AluguelDAO();
-//		
-//		Cliente cliente = new Cliente();
-//		cliente.setId(id_cliente);
-//		Livro livro = new Livro();
-//		livro.setId(id_livvro);
-//		
-//		if(dao.save(aluguel)) {
-//			System.out.println("Cadastrou");
-//		} else {
-//			System.out.println("Nao cadastrou");
-//		}
 	}
 	
 	public DataModel<Aluguel>getAlugueis(){
@@ -55,6 +53,15 @@ public class AluguelBean {
 		List<Aluguel> aluguelList = dao.findAll();
 		alugueis = new ListDataModel<Aluguel>(aluguelList);
 		return alugueis;
+	}
+	public String alterar(int id) {
+			dao = new AluguelDAO();
+			aluguel.setId(id);
+			if(dao.update(aluguel)) {
+				return "/listar-emprestimo.xhtml?faces-redirect=true";
+			} else {
+				return "/editar-emprestimo.xhtml?faces-redirect=true";
+			}
 	}
 	public void excluir(int id) {
 		aluguel.setId(id);

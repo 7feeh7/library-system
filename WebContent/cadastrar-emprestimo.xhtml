@@ -1,4 +1,6 @@
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition 
+		xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 		xmlns:h="http://xmlns.jcp.org/jsf/html"
 		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		template="template.xhtml">
@@ -10,21 +12,23 @@
 			
 				<h:outputLabel value="Cliente:*"/>
 				<h:selectOneMenu class="b-input" value="#{aluguelBean.aluguel.cliente_id}">
+					<f:selectItem itemLabel="(Selecione um cliente)" itemValue="" itemDisabled="true"/>
 					<f:selectItems  value="#{clienteBean.clientesSelect}" var="cliente" itemValue="#{cliente.key}" itemLabel="#{cliente.value}"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Livro:*"/>
 				<h:selectOneMenu class="b-input" value="#{aluguelBean.aluguel.livro_id}">
+					<f:selectItem itemLabel="(Selecione um livro)" itemValue="" itemDisabled="true"/>
 					<f:selectItems value="#{livroBean.livrosSelect}" var="livro" itemValue="#{livro.key}" itemLabel="#{livro.value}"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Data Emprestimo:*"/>
-				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_emprestimo}" >
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_emprestimo}" a:placeholder="yyyy-MM-dd">
 					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
 				</h:inputText>
 				
 				<h:outputLabel value="Data Previsao:*"/>
-				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_previsao}" >
+				<h:inputText class="b-input" value="#{aluguelBean.aluguel.data_previsao}" a:placeholder="yyyy-MM-dd">
 					<!--  <f:convertDateTime pattern="dd/MM/yyyy" />-->
 				</h:inputText>
 

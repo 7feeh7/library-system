@@ -7,7 +7,20 @@ public class Aluguel {
 	private int cliente_id;
 	private Livro livro;
 	private int livro_id;
-	
+	private String data_emprestimo;
+	private String data_previsao;
+	private String data_devolucao;
+	private char alugado;
+
+
+	public char getAlugado() {
+		return alugado;
+	}
+
+	public void setAlugado(char alugado) {
+		this.alugado = alugado;
+	}
+
 	public int getCliente_id() {
 		return cliente_id;
 	}
@@ -24,9 +37,7 @@ public class Aluguel {
 		this.livro_id = livro_id;
 	}
 
-	private String data_emprestimo;
-	private String data_previsao;
-	private String data_devolucao;
+
 
 	public Aluguel() {
 
