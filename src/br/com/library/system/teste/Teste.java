@@ -7,7 +7,7 @@ import br.com.library.system.dao.ConnectionFactory;
 
 public class Teste {
 	public static void main(String[] args) throws SQLException {
-		Connection connection = new ConnectionFactory().getConnection();
+		Connection connection = ConnectionFactory.getConnection();
 		System.out.println("Conexao aberta!");
 		connection.close();
 	}

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class LivroDAO {
 	public List<Livro> findAll() {
 		List<Livro> livros = new ArrayList<Livro>();
 		String sql = "SELECT * FROM livro";
-		String date;
+		
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();

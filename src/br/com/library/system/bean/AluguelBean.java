@@ -12,8 +12,6 @@ import javax.faces.model.ListDataModel;
 
 import br.com.library.system.dao.AluguelDAO;
 import br.com.library.system.model.Aluguel;
-import br.com.library.system.model.Cliente;
-import br.com.library.system.model.Livro;
 
 @ManagedBean(name = "aluguelBean", eager = true)
 @SessionScoped

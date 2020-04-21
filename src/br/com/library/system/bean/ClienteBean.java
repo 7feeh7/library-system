@@ -1,20 +1,16 @@
 package br.com.library.system.bean;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-import br.com.library.system.model.Cliente;
 import br.com.library.system.dao.ClienteDAO;
+import br.com.library.system.model.Cliente;
 
 @ManagedBean(name = "clienteBean", eager = true)
 @SessionScoped
@@ -53,6 +49,7 @@ public class ClienteBean{
 	public String cadastrar() {
 		dao = new ClienteDAO();
 		if (dao.save(cliente)) {
+			cliente = new Cliente();
 			return "/listar-cliente.xhtml?faces-redirect=true";
 		} else {
 			return "/cadastrar-cliente.xhtml?faces-redirect=true";

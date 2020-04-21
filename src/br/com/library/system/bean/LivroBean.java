@@ -1,14 +1,9 @@
 package br.com.library.system.bean;
-import java.sql.Connection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -24,8 +19,6 @@ public class LivroBean {
 	private Livro livro = new Livro();
 	private DataModel<Livro> livros;
 	private List<SelectItem> livrosSelect;
-	
-	
 	
 	public List<SelectItem> getLivrosSelect() {
 		if(livrosSelect == null) {

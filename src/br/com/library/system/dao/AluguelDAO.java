@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.com.library.system.model.Aluguel;
@@ -22,7 +21,6 @@ public class AluguelDAO {
 	}
 	
 	public boolean save(Aluguel aluguel) {
-		SimpleDateFormat dataFormatada = new SimpleDateFormat("yyyy-MM-dd");
 		String sql = "INSERT INTO emprestimo (id_cliente, id_livro, data_empre"
 				+ "stimo, data_previsao) VALUES (?,?,?,?)";
 		PreparedStatement ps = null;
@@ -61,7 +59,7 @@ public class AluguelDAO {
 		ResultSet rs = null;
 		List<Aluguel> alugueis = new ArrayList<>();
 		SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
-		String dt_emprestimo, dt_previsao, dt_devolucao;
+		String dt_emprestimo, dt_previsao;
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -86,8 +84,7 @@ public class AluguelDAO {
 				aluguel.setData_previsao(dt_previsao);
 
 				aluguel.setData_devolucao(rs.getString("dt_devolucao"));
-				
-				
+			
 				alugueis.add(aluguel);
 			}
 		} catch (SQLException e) {
